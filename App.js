@@ -43,6 +43,7 @@ function MyTabs() {
       <Tab.Screen
         name="Homes"
         component={Home}
+        styles={styles.actived}
         options={{
           tabBarLabel: '',
           tabBarActiveTintColor: '#8D8DAA',
@@ -134,6 +135,9 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  actived:{
+
+  }
 });
 
 export default App;

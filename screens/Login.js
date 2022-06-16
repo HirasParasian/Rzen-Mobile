@@ -1,9 +1,9 @@
 import { StyleSheet,ImageBackground } from 'react-native'
-import {View,Box,Input,Text, Button,Image} from 'native-base'
+import {Box,Input, Button,Image} from 'native-base'
 import React from 'react'
 import LoginImg from '../src/assets/images/Login-Background.jpg';
 import Logo from '../src/assets/images/logoReaderzen.png';
-import { border } from 'native-base/lib/typescript/theme/styled-system';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Login = ({ navigation }) => {
   return (
@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
         <Input borderRadius={20} my="2" size={'lg'} variant={'filled'} placeholder="Password" w="100%" />
       </Box>
       <Button onPress={() => navigation.navigate('BottomTab')} borderRadius={20} size={'lg'} mt={5} w={'90%'}>Login</Button>
-
+      <FontAwesome name="search" size={26} />
     </ImageBackground>
   )
 }
