@@ -1,94 +1,121 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {NativeBaseProvider} from 'native-base';
+import {View,Text,Container} from 'native-base'
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+//AUTH
+import Login from './screens/Login';
+import Signup from './screens/Signup';
+import ForgotPassword from './screens/ForgotPassword';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+import Profile from './screens/Profile';
+import Testing from './screens/Testing';
+import Home from './screens/Home';
+import Search from './screens/Search';
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AD from 'react-native-vector-icons/AntDesign'
+import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function MyTabs() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <Tab.Navigator
+      initialRouteName="Home"
+      tabBarColor="#f0b15c"
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          position: 'absolute',
+          backgroundColor: '#f0b15c',
+          bottom: 10,
+          left: 10,
+          right: 10,
+          borderRadius: 15,
+          paddingTop: 10,
+        },
+      }}>
+      <Tab.Screen
+        name="Homes"
+        component={Home}
+        options={{
+          tabBarLabel: '',
+          tabBarActiveTintColor: '#8D8DAA',
+          tabBarInactiveTintColor: '#F7F5F2',
+          tabBarIcon: ({ color }) => (
+            <AD name="home" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarLabel: '',
+          tabBarActiveTintColor: '#8D8DAA',
+          tabBarInactiveTintColor: '#F7F5F2',
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="search" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="testing"
+        component={Testing}
+        options={{
+          tabBarLabel: '',
+          tabBarActiveTintColor: '#8D8DAA',
+          tabBarInactiveTintColor: '#F7F5F2',
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="sticker-text-outline" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profiles"
+        component={Profile}
+        options={{
+          tabBarLabel: '',
+          tabBarActiveTintColor: '#8D8DAA',
+          tabBarInactiveTintColor: '#F7F5F2',
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="user" color={color} size={26} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+}
+function Auth() {
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Login">
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+    </Stack.Navigator>
   );
-};
+}
+
+const App = () => {
+  return (
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Auth" component={Auth} />
+          <Stack.Screen name="BottomTab" component={MyTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
+  )
+}
+
 
 const styles = StyleSheet.create({
   sectionContainer: {
