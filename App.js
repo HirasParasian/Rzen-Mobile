@@ -1,10 +1,10 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {NativeBaseProvider} from 'native-base';
-import {View,Text,Container} from 'native-base'
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {View, Text, Container} from 'native-base';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 //AUTH
 import Login from './screens/Login';
@@ -17,7 +17,7 @@ import Home from './screens/Home';
 import Search from './screens/Search';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import AD from 'react-native-vector-icons/AntDesign'
+import AD from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
@@ -48,9 +48,7 @@ function MyTabs() {
           tabBarLabel: '',
           tabBarActiveTintColor: '#8D8DAA',
           tabBarInactiveTintColor: '#F7F5F2',
-          tabBarIcon: ({ color }) => (
-            <AD name="home" color={color} size={26} />
-          ),
+          tabBarIcon: ({color}) => <AD name="home" color={color} size={26} />,
         }}
       />
       <Tab.Screen
@@ -60,7 +58,7 @@ function MyTabs() {
           tabBarLabel: '',
           tabBarActiveTintColor: '#8D8DAA',
           tabBarInactiveTintColor: '#F7F5F2',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({color}) => (
             <FontAwesome name="search" color={color} size={26} />
           ),
         }}
@@ -72,7 +70,7 @@ function MyTabs() {
           tabBarLabel: '',
           tabBarActiveTintColor: '#8D8DAA',
           tabBarInactiveTintColor: '#F7F5F2',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({color}) => (
             <Ionicons name="sticker-text-outline" color={color} size={26} />
           ),
         }}
@@ -84,7 +82,7 @@ function MyTabs() {
           tabBarLabel: '',
           tabBarActiveTintColor: '#8D8DAA',
           tabBarInactiveTintColor: '#F7F5F2',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({color}) => (
             <FontAwesome name="user" color={color} size={26} />
           ),
         }}
@@ -95,7 +93,7 @@ function MyTabs() {
 function Auth() {
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{headerShown: false}}
       initialRouteName="Login">
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
@@ -108,15 +106,14 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Auth" component={Auth} />
           <Stack.Screen name="BottomTab" component={MyTabs} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
-  )
-}
-
+  );
+};
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -135,9 +132,7 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
-  actived:{
-
-  }
+  actived: {},
 });
 
 export default App;
