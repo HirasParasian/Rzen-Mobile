@@ -1,7 +1,10 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
-import {Box, View, Text, VStack, Center, HStack, Image} from 'native-base';
+import {Box, View, Text, VStack, Center, HStack, Image, Pressable,Stack, Button} from 'native-base';
 import profileImg from '../src/assets/images/profile.png';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import Fontisto from 'react-native-vector-icons/Fontisto'
+import MC from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const Home = () => {
   return (
@@ -26,7 +29,49 @@ const Home = () => {
             />
           </View>
         </HStack>
-        <Center w="95%" h="15%" bgColor={'white'} shadow={3} rounded={50} />
+        <View w="95%" h="17%" bgColor={'white'} px={'5'} shadow={3} rounded={30} >
+          <Stack direction="row" justifyContent={'space-between'} mb="2.5" mt="3.5" space={3}>
+            <Button bg="#f0b15c" rounded="xl" shadow={"3"}>
+              <Center size="16" _text={{  color: "warmGray.50",fontWeight: "medium"}} >
+                <SimpleLineIcons name='note' size={30}></SimpleLineIcons>
+                <Text> Notes </Text>
+              </Center>
+            </Button>
+            <Button bg="#f0b15c" rounded="xl" shadow={"3"}>
+            <Center  size="16" _text={{color: "warmGray.50",fontWeight: "medium"}}>
+              <Fontisto name='favorite' size={30}></Fontisto>
+              <Text>Favorite</Text>
+            </Center>
+            </Button>
+            <Button bg="#f0b15c" rounded="xl" shadow={"3"} >
+            <Center size="16" _text={{color: "warmGray.50", fontWeight: "medium"}}>
+            <SimpleLineIcons name='book-open' size={30}></SimpleLineIcons>
+              <Text>Penerbit</Text>
+            </Center>
+          </Button>
+          </Stack>
+
+          <Stack direction="row" justifyContent={'space-between'} mb="2.5" mt="1.5" space={3}>
+          <Button bg="#f0b15c"  rounded="xl" shadow={"3"}>
+              <Center size="16" _text={{  color: "warmGray.50",fontWeight: "medium"}} >
+                <MC name="typewriter" size={30}></MC>
+                <Text>Lomba</Text>
+              </Center>
+            </Button>
+            <Button bg="#f0b15c"  rounded="xl" shadow={"3"}>
+              <Center size="16" _text={{  color: "warmGray.50",fontWeight: "medium"}} >
+              <Fontisto name='shopping-store' size={30}></Fontisto>
+              <Text fontSize={13}>Toko</Text>
+              </Center>
+            </Button>
+            <Button bg="#f0b15c"  rounded="xl" shadow={"3"}>
+              <Center size="16" _text={{  color: "warmGray.50",fontWeight: "medium"}} >
+              <Fontisto name='commenting' size={30}></Fontisto>
+              <Text fontSize={13}>Testimony</Text>
+              </Center>
+            </Button>
+          </Stack>  
+        </View>
         <Center w="100%" h="100%" bg="white" roundedTop={60} shadow={3} />
       </VStack>
     </View>
